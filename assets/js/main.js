@@ -10,6 +10,10 @@ Array.prototype.shuffle = function() {
   return this;
 }
 
+var pieces = document.getElementById('puzzle').children,
+board = [[0,0],[1,0],[2,0],[3,0],[0,1],[1,1],[2,1],[3,1],[0,2],[1,2],[2,2],[3,2],[0,3],[1,3],[2,3],[3,3]],
+board = board.shuffle();
+
 /**
 * Scrambles the set of tiles so that a user may restart the game
 * @param {int[]} data An array containing a set of numbers defining
@@ -19,12 +23,9 @@ Array.prototype.shuffle = function() {
 * unsolvable.
 */
 var scramble = function(data) {
-	var board = [[0,0],[1,0],[2,0],[3,0],[0,1],[1,1],[2,1],[3,1],[0,2],[1,2],[2,2],[3,2],[0,3],[1,3],[2,3],[3,3]],
-	sBoard = board.shuffle(),
-	pieces = document.getElementById('puzzle').children;
 	for(var i = 0, len = pieces.length; i < len; i++) {
-		pieces[i].style.left = sBoard[i][0]*160+'px';
-		pieces[i].style.top = sBoard[i][1]*160+'px';
+		pieces[i].style.left = board[i][0]*160+'px';
+		pieces[i].style.top = board[i][1]*160+'px';
 		if(i == len -1) {
 			console.log('end')
 			pieces[i].className += ' blank'
