@@ -13,8 +13,8 @@ Array.prototype.shuffle = function() {
 }
 
 var pieces = document.getElementById('puzzle').children,
-board = [[0,0],[1,0],[2,0],[3,0],[0,1],[1,1],[2,1],[3,1],[0,2],[1,2],[2,2],[3,2],[0,3],[1,3],[2,3],[3,3]],
-board = board.shuffle();
+board = [[0,0],[1,0],[2,0],[3,0],[0,1],[1,1],[2,1],[3,1],[0,2],[1,2],[2,2],[3,2],[0,3],[1,3],[2,3],[3,3]];
+
 
 /**
 * Checks to see the possible moves for a piece
@@ -22,7 +22,8 @@ board = board.shuffle();
 */
 
 var checkMoves = function(e) {
-	console.log(e)
+	console.log(e);
+	var trg
 };
 
 /**
@@ -34,13 +35,17 @@ var checkMoves = function(e) {
 * unsolvable.
 */
 var scramble = function(data) {
+	board = board.shuffle();
 	for(var i = 0, len = pieces.length; i < len; i++) {
 		pieces[i].style.left = board[i][0]*160+'px';
 		pieces[i].style.top = board[i][1]*160+'px';
 		pieces[i].addEventListener('click', checkMoves);
 		if(i == len -1) {
 			console.log('end')
-			pieces[i].className += ' blank'
+			if (!pieces[i].className.match(/(?:^|\s)blank(?!\S)/) ) {
+				pieces[i].className += ' blank'
+			}
+			
 		}
 	}
 	return true;
