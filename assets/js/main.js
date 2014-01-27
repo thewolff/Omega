@@ -19,19 +19,17 @@ Array.prototype.shuffle = function() {
 * unsolvable.
 */
 var scramble = function(data) {
-	//Randomly generate a number between 0 and 15
-	//Assign it to each piece
-	var board = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];
-	console.log(board.shuffle())
-	var pieces = document.getElementById('puzzle').children;
-	console.log(newPos.length)
-	console.log(Math.floor((Math.random()*10)+6));
-	/*
-	for(var i = 0, len = newPos.length; len < 16; i++) {
-
+	var board = [[0,0],[1,0],[2,0],[3,0],[0,1],[1,1],[2,1],[3,1],[0,2],[1,2],[2,2],[3,2],[0,3],[1,3],[2,3],[3,3]],
+	sBoard = board.shuffle(),
+	pieces = document.getElementById('puzzle').children;
+	for(var i = 0, len = pieces.length; i < len; i++) {
+		pieces[i].style.left = sBoard[i][0]*160+'px';
+		pieces[i].style.top = sBoard[i][1]*160+'px';
+		if(i == len -1) {
+			console.log('end')
+			pieces[i].className += ' blank'
+		}
 	}
-	*/
-	console.log(pieces);
 };
 
 var button = document.getElementById("scramble");
