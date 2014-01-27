@@ -1,3 +1,5 @@
+(function(){
+
 Array.prototype.shuffle = function() {
   var i = this.length, j, temp;
   if ( i == 0 ) return this;
@@ -15,6 +17,15 @@ board = [[0,0],[1,0],[2,0],[3,0],[0,1],[1,1],[2,1],[3,1],[0,2],[1,2],[2,2],[3,2]
 board = board.shuffle();
 
 /**
+* Checks to see the possible moves for a piece
+* @param {obj} event object
+*/
+
+var checkMoves = function(e) {
+	console.log(e)
+};
+
+/**
 * Scrambles the set of tiles so that a user may restart the game
 * @param {int[]} data An array containing a set of numbers defining
 * the board state. (Optional).
@@ -26,13 +37,16 @@ var scramble = function(data) {
 	for(var i = 0, len = pieces.length; i < len; i++) {
 		pieces[i].style.left = board[i][0]*160+'px';
 		pieces[i].style.top = board[i][1]*160+'px';
+		pieces[i].addEventListener('click', checkMoves);
 		if(i == len -1) {
 			console.log('end')
 			pieces[i].className += ' blank'
 		}
 	}
+	return true;
 };
 
 var button = document.getElementById("scramble");
 button.addEventListener('click', scramble);
 
+})()
