@@ -1,23 +1,24 @@
 
+#container {width: 640px; margin:0 auto;}
+#puzzle {width: 640px; height: 640px; margin: 0 auto; position:relative;}
+#puzzle div {width: 160px; height: 160px; position: absolute; background: url('/assets/img/lion.png')}
 
-#puzzle {width: 640px; height: 640px; margin: 0 auto;}
-#puzzle div {float:left; width: 160px; height: 160px; float: left; background: url('/assets/img/lion.png')}
+#puzzle #piece_00 {left:0; top: 0;}
+#puzzle #piece_01 {left:160px; top: 0; background-position: -160px 0;}
+#puzzle #piece_02 {left: 320px; top: 0; background-position: -320px 0;}
+#puzzle #piece_03 {left: 480px; top:0; background-position: -480px 0;}
 
-#puzzle #piece_01 {background-position: -160px 0;}
-#puzzle #piece_02 {background-position: -320px 0;}
-#puzzle #piece_03 {background-position: -480px 0;}
+#puzzle #piece_04 {left:0px; top: 160px; background-position: 0 -160px;}
+#puzzle #piece_05 {left:160px; top: 160px; background-position: -160px -160px;}
+#puzzle #piece_06 {left:320px; top: 160px; background-position: -320px -160px;}
+#puzzle #piece_07 {left:480px; top: 160px; background-position: -480px -160px;}
 
-#puzzle #piece_04 {background-position: 0 -160px;}
-#puzzle #piece_05 {background-position: -160px -160px;}
-#puzzle #piece_06 {background-position: -320px -160px;}
-#puzzle #piece_07 {background-position: -480px -160px;}
+#puzzle #piece_08 {left:0px; top: 320px; background-position: 0 -320px;}
+#puzzle #piece_09 {left:160px; top: 320px; background-position: -160px -320px;}
+#puzzle #piece_10 {left:320px; top: 320px; background-position: -320px -320px;}
+#puzzle #piece_11 {left:480px; top: 320px; background-position: -480px -320px;}
 
-#puzzle #piece_08 {background-position: 0 -320px;}
-#puzzle #piece_09 {background-position: -160px -320px;}
-#puzzle #piece_10 {background-position: -320px -320px;}
-#puzzle #piece_11 {background-position: -480px -320px;}
-
-#puzzle #piece_12 {background-position: 0 -480px;}
-#puzzle #piece_13 {background-position: -160px -480px;}
-#puzzle #piece_14 {background-position: -320px -480px;}
-#puzzle #piece_15 {background-position: -480px -480px;}
+#puzzle #piece_12 {left:0px; top: 480px; background-position: 0 -480px;}
+#puzzle #piece_13 {left:160px; top: 480px; background-position: -160px -480px;}
+#puzzle #piece_14 {left:320px; top: 480px; background-position: -320px -480px;}
+#puzzle #piece_15 {left:480px; top: 480px; background-position: -480px -480px;}
