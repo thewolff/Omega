@@ -13,7 +13,6 @@ Array.prototype.shuffle = function() {
 }
 
 var pieces = document.getElementById('puzzle').children,
-dataBoard
 board = [[0,0],[1,0],[2,0],[3,0],[0,1],[1,1],[2,1],[3,1],[0,2],[1,2],[2,2],[3,2],[0,3],[1,3],[2,3],[3,3]],
 dBoard = [];
 
@@ -24,6 +23,8 @@ dBoard = [];
 
 var checkMoves = function(e) {
 	console.log(e);
+	var target = e.target;
+	console.log(target)
 };
 
 /**
@@ -34,28 +35,41 @@ var checkMoves = function(e) {
 * canBoardBeSolved function, returning true if solvable, false if
 * unsolvable.
 */
-var scramble = function(data) {
+var scramble = function() {
 	board = board.shuffle();
 	for(var i = 0, len = pieces.length; i < len; i++) {
+		// Move the piece based on the x,y coords from
+		// the shuffled board
 		pieces[i].style.left = board[i][0]*160+'px';
 		pieces[i].style.top = board[i][1]*160+'px';
-		var x = board[i][0];
-		var y = board[i][1];
-		var w = 4;
-		dBoard.push(y*w+x)
-		pieces[i].addEventListener('click', checkMoves);
-		if(i == len -1) {
-			console.log('end')
+
+		// Create a 1 dimensional array based on
+		// shuffled coordinates from board
+		dBoard.push(board[i][1]*4+board[i][0])
+
+
+		// Add the blank class to the last piece
+		if(i !== len -1) {
+			// Add event listeners
+			pieces[i].addEventListener('click', checkMoves);
+		} else {
 			if (!pieces[i].className.match(/(?:^|\s)blank(?!\S)/) ) {
 				pieces[i].className += ' blank'
 			}
-			if(!canBoardBeSolved(dBoard)){
-				dBoard = [];
-				scramble();
-			};
-			
 		}
 	}
+
+	// Check to see if board is solvable
+	// If not, empty the 1 dimensional array
+	// and reshuffle the board
+	
+	if(!canBoardBeSolved(dBoard)){
+		dBoard = [];
+		scramble();
+	} else {
+		console.log(canBoardBeSolved(dBoard))
+		console.log(dBoard)
+	};
 	return true;
 };
 
