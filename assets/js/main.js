@@ -13,8 +13,9 @@ Array.prototype.shuffle = function() {
 }
 
 var pieces = document.getElementById('puzzle').children,
-board = [[0,0],[1,0],[2,0],[3,0],[0,1],[1,1],[2,1],[3,1],[0,2],[1,2],[2,2],[3,2],[0,3],[1,3],[2,3],[3,3]];
-
+dataBoard
+board = [[0,0],[1,0],[2,0],[3,0],[0,1],[1,1],[2,1],[3,1],[0,2],[1,2],[2,2],[3,2],[0,3],[1,3],[2,3],[3,3]],
+dBoard = [];
 
 /**
 * Checks to see the possible moves for a piece
@@ -23,7 +24,6 @@ board = [[0,0],[1,0],[2,0],[3,0],[0,1],[1,1],[2,1],[3,1],[0,2],[1,2],[2,2],[3,2]
 
 var checkMoves = function(e) {
 	console.log(e);
-	var trg
 };
 
 /**
@@ -39,12 +39,20 @@ var scramble = function(data) {
 	for(var i = 0, len = pieces.length; i < len; i++) {
 		pieces[i].style.left = board[i][0]*160+'px';
 		pieces[i].style.top = board[i][1]*160+'px';
+		var x = board[i][0];
+		var y = board[i][1];
+		var w = 4;
+		dBoard.push(y*w+x)
 		pieces[i].addEventListener('click', checkMoves);
 		if(i == len -1) {
 			console.log('end')
 			if (!pieces[i].className.match(/(?:^|\s)blank(?!\S)/) ) {
 				pieces[i].className += ' blank'
 			}
+			if(!canBoardBeSolved(dBoard)){
+				dBoard = [];
+				scramble();
+			};
 			
 		}
 	}
